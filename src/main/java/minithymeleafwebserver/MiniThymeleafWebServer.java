@@ -62,9 +62,9 @@ public class MiniThymeleafWebServer implements HttpHandler
     {
         Thread.setDefaultUncaughtExceptionHandler(new MiniThymeleafWebServer.MiniThymeleafWebServerExceptionHandler());
         Integer port = null;
-        if ((args.length > 0) && (args[1] != null))
+        if ((args.length > 0) && (args[0] != null))
         {
-            port = Integer.parseInt(args[1]);
+            port = Integer.parseInt(args[0]);
             // http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.txt
             if (!((port.intValue() == 80) || (port.intValue() == 8080) || (port.intValue() >= 8084)))
             {
