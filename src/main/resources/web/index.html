@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{minithymeleafwebserver.title}">Mini Thymeleaf Web Server</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" media="all" href="css/mtws.css" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!--link rel="stylesheet" type="text/css" media="all" href="./css/mtws.css" th:href="@{/css/mtws.css}" /-->
+    </head>
+    <body>
+        <h1 th:text="#{minithymeleafwebserver.title}">Server Title</h1>
+        <p>It is now: <span th:text="${nowdate}">The date now</span></p>
+        <p>Started at: <span th:text="${startdate}">The date started</span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th th:text="#{serve.uri}+':'">URI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="uri : ${uris}">
+                    <td><a href="./" th:href="${uri}" ><span th:text="${host}+${uri}">Host and URI</span></a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </body>
+</html>

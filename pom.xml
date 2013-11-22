@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.gjb2048</groupId>
+    <artifactId>MiniThymeleafWebServer</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>MiniThymeleafWebServer</name>
+    <description>Small web server that can serve Thymeleaf - http://www.thymeleaf.org/ - templates.  Designed to work on a Raspberry Pi.</description>
+    <url>https://github.com/gjb2048/MiniThymeleafWebServer</url>
+    <inceptionYear>2013</inceptionYear>
+    <packaging>jar</packaging>
+    
+    <licenses>
+        <license>
+            <name>Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</name>
+            <url>http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <scm>
+        <connection>scm:git:git://github.com/gjb2048/MiniThymeleafWebServer.git</connection>
+        <developerConnection>scm:git:git@github.com:gjb2048/MiniThymeleafWebServer.git</developerConnection>
+        <url>https://github.com/gjb2048/MiniThymeleafWebServer</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>gjb2048</id>
+            <name>Gareth J Barnard</name>
+            <url>https://github.com/gjb2048</url>
+            <properties>
+                <name>About dot me</name>
+                <url>http://about.me/gjbarnard</url>
+            </properties>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+        
+    <properties>
+        <thymeleaf.version>2.1.1.RELEASE</thymeleaf.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <junit.version>4.11</junit.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mockito.version>1.9.5</mockito.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>package-jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>minithymeleafwebserver.MiniThymeleafWebServer</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>        
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>${thymeleaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+      
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

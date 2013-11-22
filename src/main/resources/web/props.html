@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Mini Thymeleaf Web Server - System Properties</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" media="all" href="css/mtws.css" />
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!--link rel="stylesheet" type="text/css" media="all" href="./css/mtws.css" th:href="@{/css/mtws.css}" /-->
+    </head>
+    <body>
+        <h1 th:text="#{minithymeleafwebserver.title}">Server Title</h1>
+        <h2>Called from: <span th:text="${host}">Host</span></h2>
+        <h2>System Properties</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th th:text="#{props.property}">Prop</th>
+                    <th th:text="#{props.value}">Val</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="sysprop : ${sysProps}">
+                    <td th:text="${sysprop.name}">Property name</td>
+                    <td th:text="${sysprop.value}">Property value</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
